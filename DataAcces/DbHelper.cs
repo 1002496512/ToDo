@@ -8,7 +8,7 @@ namespace ToDo.DataAcces
         OleDbConnection connection;
         OleDbCommand command;
         OleDbDataAdapter dataAdapter;
-        DataTable dataTable;
+        OleDbTransaction transaction;
 
         public DbHelper()
         {
@@ -54,7 +54,20 @@ namespace ToDo.DataAcces
             return dataTable;
         }
 
+        public void OpenTransaction()
+        {
+            this.transaction = this.connection.BeginTransaction();
+            this.command.Transaction = this.transaction;
+        }
 
+        public void CommitTransaction()
+        {
+            this.transaction.Commit();
+        }
+        public void RollbackTransaction()
+        {
+            this.transaction.Rollback();
+        }
 
     }
 }

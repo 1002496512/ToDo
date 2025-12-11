@@ -1,6 +1,6 @@
 ﻿namespace ToDo.Models
 {
-    public class Task
+    public class TaskTod
     {
         int taskId;
         string taskDescription;
@@ -10,7 +10,7 @@
         string userId;
         int taskTypeId;
 
-        public Task(int taskId, string taskDescription, int taskUrgent, string taskDate, int taskStatus, string userId, int taskTypeId)
+        public TaskTod(int taskId, string taskDescription, int taskUrgent, string taskDate, int taskStatus, string userId, int taskTypeId)
         {
             this.taskId = taskId;
             this.taskDescription = taskDescription;
