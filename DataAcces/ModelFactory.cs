@@ -53,5 +53,13 @@ namespace ToDo.DataAcces
                               userId,
                               taskTypeId);
         }
+
+        public TaskType GetTaskType(DataRow dataRow)
+        {
+            int taskTypeId = int.Parse(dataRow["taskTypeId"].ToString());
+            string taskTypeName=dataRow["taskTypeName"].ToString();
+            string userId= dataRow["taskTypeName"].ToString();
+            return new TaskType(taskTypeId, taskTypeName, userId);  
+        }
     }
 }

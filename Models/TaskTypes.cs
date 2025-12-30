@@ -1,14 +1,16 @@
 ﻿namespace ToDo.Models
 {
-    public class TaskTypes
+    public class TaskType
     {
         int taskTypeId;
         string taskTypeName;
+        string userId;
 
-        public TaskTypes(int taskTypeId, string taskTypeName)
+        public TaskType(int taskTypeId, string taskTypeName, string userId)
         {
             this.taskTypeId = taskTypeId;
             this.taskTypeName = taskTypeName;
+            this.userId = userId;
         }
 
         public int GetTaskTypeId()
@@ -29,6 +31,16 @@
         public void SetTaskTypeName(string taskTypeName)
         {
             this.taskTypeName = taskTypeName;
-        }       
+        }
+
+        public string GetUserId()
+        {
+            return this.userId;
+        }
+
+        public void SetUserId(string userId)
+        {
+            this.userId = userId;
+        }
     }
 }
