@@ -28,25 +28,42 @@ namespace ToDo.DataAcces
             return cities;  
         }
 
-        public TodoListViewModel GetTodoListViewModel( string userId, int taskTypeId = 0)
+        public TaskViewModel GetTaskVieModel(string userId)
+        {
+            string sqlTaskTypes = $"Select * from TaskTypes Where Useid='{userId}'";
+            DataTable taskTypesDataTable = this.dbHelper.GetDataTable(sqlTaskTypes, "TaskTypes");
+            string sqlTaskTodos = $"Select * from Tasks Where Useid='{userId}'";
+            DataTable taskTodosDataTable = this.dbHelper.GetDataTable(sqlTaskTodos, "Tasks");
+            TaskViewModel taskViewModel = new TaskViewModel(taskTypesDataTable.Rows.Count,
+                                                            taskTodosDataTable.Rows.Count);
+            for(int i = 0; i < taskTypesDataTable.Rows.Count; i++)
+            {
+                TaskType taskType = this.modelFactory.GetTaskType(taskTypesDataTable.Rows[i]);
+                taskViewModel.AddTaskType(taskType);
+            }
+            for (int i = 0; i < taskTodosDataTable.Rows.Count; i++)
+            {
+                TaskTodo taskTodo = this.modelFactory.GetToDoItem(taskTodosDataTable.Rows[i]);
+                taskViewModel.AddTaskTodo(taskTodo);
+            }
+
+            return taskViewModel;     
+             
+        }
+
+        public TaskType[] GetAllTaskType(string userId)
         {
            
-            string sql = $"Select * from TaskTypes Where UserId='{userId}'";
-            DataTable dtTaskTypes = this.dbHelper.GetDataTable(sql, "TaskTypes");
-            sql = $"Select * from Tasks Where UserId='{userId}'";
-            DataTable dtTasks = this.dbHelper.GetDataTable(sql, "TaskTypes");
-            TodoListViewModel todoListViewModel = new TodoListViewModel(dtTasks.Rows.Count, dtTaskTypes.Rows.Count);    
-            for (int i = 0;i < dtTasks.Rows.Count;i++) 
-             {
-                    TaskTod taskTod = this.modelFactory.GetToDoItem(dtTasks.Rows[i]);
-                    todoListViewModel.AddTaskTod(taskTod);  
-             }
-             for(int i=0; i< dtTaskTypes.Rows.Count; i++)
-             {
-                 TaskType taskType = this.modelFactory.GetTaskType(dtTaskTypes.Rows[i]);
-                todoListViewModel.AddTaskType(taskType);
-             }
-             return todoListViewModel;  
+            string sqlTaskTypes = $"Select * from TaskTypes Where Useid='{userId}'";
+            DataTable taskTypesDataTable = this.dbHelper.GetDataTable(sqlTaskTypes, "TaskTypes");
+            TaskType[] taskTypes = new TaskType[taskTypesDataTable.Rows.Count];
+            for (int i = 0; i < taskTypesDataTable.Rows.Count; i++)
+            {
+                TaskType taskType = this.modelFactory.GetTaskType(taskTypesDataTable.Rows[i]);
+                taskTypes[i] =taskType;
+            }
+            return taskTypes;
         }
+
     }
 }

@@ -36,7 +36,7 @@ namespace ToDo.DataAcces
             return new City(citeId, citeName);
         }
 
-        public TaskTod GetToDoItem(DataRow dataRow)
+        public TaskTodo GetToDoItem(DataRow dataRow)
         {
             int taskId = int.Parse( dataRow["taskId"].ToString());
             string taskDescription= dataRow["taskDescription"].ToString();
