@@ -79,7 +79,15 @@ namespace ToDo.DataAcces
                                              TaskDescription='{taskTodo.GetTaskDescription},
                                              TaskUrgent={taskTodo.GetTaskUrgent()},
                                              TaskDate='{taskTodo.GetTaskDate()}',
-                                             UserId='{taskTodo.GetUserId()}')";
+                                             UserId='{taskTodo.GetUserId()}'), 
+                                             TaskStatus
+                                             where TaskId={taskTodo.GetTaskId()}";
+            return this.dbHelper.ChangeDb(sql) > 0;
+        }
+
+        public bool UpdateStausToDo(int taskTodoId, int status)
+        {
+            string sql = @"Update Tasks set TaskStatus={status} where TaskId={taskTodoId}";
             return this.dbHelper.ChangeDb(sql) > 0;
         }
 
