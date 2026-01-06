@@ -3,6 +3,7 @@
     public class TaskTodo
     {
         int taskId;
+        string taskName;
         string taskDescription;
         int taskUrgent;
         string taskDate;
@@ -28,6 +29,15 @@
         {
             this.taskId = taskId;
         }
+        public string GetTaskName()
+        {
+            return this.taskName;
+        }
+        public void SetTaskTaskName(string taskName)
+        {
+            this.taskName = taskName;
+        }
+
 
         public string GetTaskDescription()
         {

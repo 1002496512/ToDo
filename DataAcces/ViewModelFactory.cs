@@ -65,5 +65,23 @@ namespace ToDo.DataAcces
             return taskTypes;
         }
 
+        public bool AddNewToDo(TaskTodo taskTodo)
+        {
+            string sql = @$"Insert into Tasks(TaskName,TaskDescription,TaskUrgent,TaskDate,UserId)
+                           values('{taskTodo.GetTaskName()}','{taskTodo.GetTaskDescription}',
+                                   {taskTodo.GetTaskUrgent()},'{taskTodo.GetTaskDate()}','{taskTodo.GetUserId()}'";
+            return  this.dbHelper.ChangeDb(sql)>0;
+        }
+
+        public bool UpdateToDo(TaskTodo taskTodo)
+        {
+            string sql = @$"Update Tasks set TaskName='{taskTodo.GetTaskName()}',
+                                             TaskDescription='{taskTodo.GetTaskDescription},
+                                             TaskUrgent={taskTodo.GetTaskUrgent()},
+                                             TaskDate='{taskTodo.GetTaskDate()}',
+                                             UserId='{taskTodo.GetUserId()}')";
+            return this.dbHelper.ChangeDb(sql) > 0;
+        }
+
     }
 }
