@@ -42,10 +42,10 @@ namespace ToDo.DataAcces
             string taskDescription= dataRow["taskDescription"].ToString();
             int taskUrgent= int.Parse(dataRow["taskUrgent"].ToString()); ;
             string taskDate=dataRow["taskDate"].ToString();
-            int taskStatus= int.Parse(dataRow["taskStatus"].ToString());
+            int taskStatus= int.Parse(dataRow["TaskStatusId"].ToString());
             string userId=dataRow["userId"].ToString();
-            int taskTypeId=int.Parse(dataRow["taskTypeId"].ToString());
-            return new TaskTod(taskId,
+            int taskTypeId=int.Parse(dataRow["UserTaskId"].ToString());
+            return new TaskTodo(taskId,
                               taskDescription,
                               taskUrgent,
                               taskDate,
