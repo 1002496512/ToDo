@@ -77,7 +77,6 @@ namespace ToDo.DataAcces
             return this.dbHelper.ChangeDb(sql) > 0;
         }
 
-
         //Use case: Update To do
         public bool UpdateToDo(TaskTodo taskTodo)
         {
@@ -113,6 +112,7 @@ namespace ToDo.DataAcces
 
         }
 
+        // Use Case:  User Registration
         public string AddNewUser(User user)
         {
             string sql = $@"Insert into Users(UserId,UserAddress, UserFirstName,

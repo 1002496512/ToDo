@@ -28,7 +28,7 @@ namespace ToDo
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Home}/{action=ViewHomePage}/{id?}");
 
             app.Run();
         }
