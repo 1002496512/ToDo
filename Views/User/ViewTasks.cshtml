@@ -1,5 +1,33 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using ToDo.Models
+@model TaskViewModel
+
 @{
+    ViewData["Title"] = "ViewHomePage";
+    Layout = "~/Views/Shared/MasterPage.cshtml";
 }
+
+<div class="dashboard">
+   @for(int i = 0; i < Model.GetTaskTypesCount(); i++)
+    {
+       <div class="dashboard-item">
+            <a href="#" class="dashboard-item-link">
+                @Model.GetTaskType(i).GetTaskTypeName()
+            </a> 
+        </div>
+    }
+    <p class="homebutton">All The To Do List Here</p>
+</div>
+<div class="main-content">
+    @for(int i=0; i<Model.GetTaskTodosCount(); i++)
+    {
+        <div class="main-content-task">
+            <div class="taskName">@Model.GetTaskTodo(i).GetTaskName()</div>
+            <div class="taskDescription">@Model.GetTaskTodo(i).GetTaskDescription()</div>
+            <div class="taskUrgent">@Model.GetTaskTodo(i).GetTaskUrgent()</div>
+            <div class="taskDate">@Model.GetTaskTodo(i).GetTaskDate()</div>
+            <div class="taskStatus">@Model.GetTaskTodo(i).GetTaskStatus()</div>
+            
+            .
+          </div>
+    }
+</div>
