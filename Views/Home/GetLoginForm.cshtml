@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "ViewHomePage";
+    Layout = "~/Views/Shared/MasterPage.cshtml";
+}
+
+<div class="dashboard">
+    <h1 class="hometitle">
+        You Can Take
+        Your To Do List
+        FROM WHEREVER
+        YOU ARE!
+    </h1>
+    <p class="hometext">
+        LOREM IPSUM DOLOR SIT DOLOR AMET
+        CONSECTETUER ADIPISCING ELIT SED
+        AMET DOLOREM MAGNA SIT.
+    </p>
+    <p class="homebutton">All The To Do List Here</p>
+</div>
+<div class="main-content">
+    @if(ViewBag.LoginError !=null)
+            {
+                <h1 style="color:red;text-align:center">
+                    Your login is not succed. Try again
+                </h1>
+            }
+<form action="~/home/Login" method="post" 
+      style="width:450px;padding:20px 0px 20px 60px;
+             margin:100px auto;border:1px solid #c1c1c1">
+            <div style="margin:20px">
+        <label>  Nickname</label>
+        <input type="text" name="nickname" style="padding:10px" />
+    </div>
+    <div style="margin:20px">
+        <label>  Password</label>
+        <input type="text" name="password" style="padding:10px"/>
+    </div>
+    <div style="text-align:center">
+        <button type="submit"  style="padding:10px;">Login</button>
+    </div>
+    <p>iujiuiuwieuiwueiuw<a href="#">sing up</a></p>
+</Form></div>
+
+
+
+
+

@@ -16,7 +16,7 @@ namespace ToDo.DataAcces
             this.command = new OleDbCommand();
             this.command.Connection = this.connection;
             //this.connection.ConnectionString = $@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source='{Directory.GetCurrentDirectory()}\TodoList.accdb'";
-             this.connection.ConnectionString = $@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source='D:\AlexLessons\2025=2026\YA\Computerengering\ToDo\App_Data\TodoList.accdb'";
+             this.connection.ConnectionString = $@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source='D:\Alex\ToDo\App_Data\TodoList.accdb'";
 }
         
 
